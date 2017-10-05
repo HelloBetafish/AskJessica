@@ -48,26 +48,27 @@ $("#add").on("click", function(event) {
 });
 
 $("#clear").on("click", function(event) {
-var userlist = JSON.parse(localStorage.getItem("userlist"));
+event.preventDefault();
+var insidelist = JSON.parse(localStorage.getItem("userlist"));
 
   // Deletes the item marked for deletion
-  userlist = [];
-  list = userlist;
+  insidelist = [];
+  list = insidelist;
 
-  localStorage.setItem("userlist", JSON.stringify(userlist));
+  localStorage.setItem("userlist", JSON.stringify(insidelist));
 
   display();
 });
 
-$(document).on("click", "button.delete", function() {
-  var userlist = JSON.parse(localStorage.getItem("userlist"));
+$(document.body).on("click", "button.delete", function() {
+  var insidelist = JSON.parse(localStorage.getItem("userlist"));
   var currentIndex = $(this).attr("data-index");
 
   // Deletes the item marked for deletion
-  userlist.splice(currentIndex, 1);
-  list = userlist;
+  insidelist.splice(currentIndex, 1);
+  list = insidelist;
 
-  localStorage.setItem("userlist", JSON.stringify(userlist));
+  localStorage.setItem("userlist", JSON.stringify(insidelist));
 
   display();
 });
@@ -92,4 +93,15 @@ $(document.body).on("click", ".heart", function(){
     $(this).nextAll().text("favorite_border");
     $(this).nextAll().attr("state", "heart-empty");
   }
+});
+
+var askJessica = function (){
+  var insidelist = JSON.parse(localStorage.getItem("userlist"));
+  var lengthArr = insidelist.length;
+  var randomIndex = Math.floor(Math.random() * lengthArr);
+  $("#jPick").text(insidelist[randomIndex]);
+}
+
+$(document.body).on("click", "#pick", function() {
+  askJessica();
 });

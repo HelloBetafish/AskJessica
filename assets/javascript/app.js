@@ -99,7 +99,12 @@ var askJessica = function (){
   var insidelist = JSON.parse(localStorage.getItem("userlist"));
   var lengthArr = insidelist.length;
   var randomIndex = Math.floor(Math.random() * lengthArr);
+  if (lengthArr == 0) {
+    $("#jPick").text("You need to give me some options!");
+  }
+  else {
   $("#jPick").text(insidelist[randomIndex]);
+  }
 }
 
 $(document.body).on("click", "#pick", function() {

@@ -100,7 +100,7 @@ var askJessica = function (){
   var lengthArr = insidelist.length;
   var randomIndex = Math.floor(Math.random() * lengthArr);
   if (lengthArr == 0) {
-    $("#jPick").text("You need to give me some options!");
+    $("#jPick").text("Options?");
   }
   else {
   $("#jPick").text(insidelist[randomIndex]);

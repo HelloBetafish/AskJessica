@@ -21,9 +21,19 @@ function display() {
       var itemGrp = $("<div class='itemGrp'>");
       var p = $("<p>").text(insideList[i].Etext);
       var b = $("<button class='delete'>").text("x").attr("data-index", i);
-      var heart = "<i class='material-icons heart' state='heart-empty'>favorite_border</i>"
-      var heartsMult = $("<div class='hearts'>").attr("heart-index", insideList[i].hearts);
-      heartsMult.append(heart.repeat(5));
+      // var heart = "<i class='material-icons heart' state='heart-empty'>favorite_border</i>";
+      var heartsMult = $("<div class='hearts'>").attr("heart-index", insideList[i].hearts).attr("data-index", i);
+      var rating = insideList[i].hearts;
+      for (var x = 0; x < rating; x++){
+          var favHeart = "<i class='material-icons heart' heartNum=" + (x + 1) + 
+          ">favorite</i>";
+          heartsMult.append(favHeart);
+      }
+      for (var y = rating; y < 5 ; y++){
+        var emptyHeart = "<i class='material-icons heart' heartNum=" + (y + 1) + ">favorite_border</i>";
+          heartsMult.append(emptyHeart);
+      }
+      // heartsMult.append(heart.repeat(5));
       p.prepend(b);
       itemGrp.append(p);
       itemGrp.append(heartsMult);
@@ -39,7 +49,7 @@ $("#add").on("click", function(event) {
   if($("#addChoice").val() !== ""){
     var entryText = $("input[type='text']").val().trim();
     $("input[type='text'").val("");
-    var heartVal = 0;
+    var heartVal = 5;
     var entry = {
       "Etext": entryText,
       "hearts": heartVal
@@ -77,27 +87,34 @@ $(document.body).on("click", "button.delete", function() {
   display();
 });
 
-// Function to change gif state between animated and still when clicked
 $(document.body).on("click", ".heart", function(){
-  var hState = $(this).attr("state");
-  var nextState = $(this).next().attr("state");
-  if (hState === "heart-empty") {
-    $(this).text("favorite");
-    $(this).prevAll().text("favorite");
-    $(this).attr("state", "heart-full");
-    $(this).prevAll().attr("state", "heart-full");
-    $(this).nextAll().text("favorite_border");
-    $(this).nextAll().attr("state", "heart-empty");
-  }
-  else if (hState === "heart-full" && $(this).is(':first-child') && nextState ==="heart-empty") {
-  	$(this).text("favorite_border");
-  	$(this).attr("state", "heart-empty")
-  }
-  else {
-    $(this).nextAll().text("favorite_border");
-    $(this).nextAll().attr("state", "heart-empty");
-  }
+  var hNum = $(this).attr("heartNum");
+  var dNum = $(this).parent().attr("data-index");
+  console.log(hNum);
+  console.log(dNum);
 });
+
+// Function to change gif state between animated and still when clicked
+// $(document.body).on("click", ".heart", function(){
+//   var hState = $(this).attr("state");
+//   var nextState = $(this).next().attr("state");
+//   if (hState === "heart-empty") {
+//     $(this).text("favorite");
+//     $(this).prevAll().text("favorite");
+//     $(this).attr("state", "heart-full");
+//     $(this).prevAll().attr("state", "heart-full");
+//     $(this).nextAll().text("favorite_border");
+//     $(this).nextAll().attr("state", "heart-empty");
+//   }
+//   else if (hState === "heart-full" && $(this).is(':first-child') && nextState ==="heart-empty") {
+//   	$(this).text("favorite_border");
+//   	$(this).attr("state", "heart-empty")
+//   }
+//   else {
+//     $(this).nextAll().text("favorite_border");
+//     $(this).nextAll().attr("state", "heart-empty");
+//   }
+// });
 
 var askJessica = function (){
   var insidelist = JSON.parse(localStorage.getItem("userlist"));

@@ -7,7 +7,7 @@ if (!Array.isArray(list)) {
 }
 
 function display() {
-  $("#list").empty();
+  $("#list").empty(); // empties out the html
   var insideList = JSON.parse(localStorage.getItem("userlist"));
 
       // Checks to see if we have any todos in localStorage
@@ -19,11 +19,10 @@ function display() {
 
     for (var i = 0; i < insideList.length; i++) {
       var itemGrp = $("<div class='itemGrp'>");
-      var p = $("<p>").text(insideList[i]);
+      var p = $("<p>").text(insideList[i].Etext);
       var b = $("<button class='delete'>").text("x").attr("data-index", i);
-      // var heart = $("<i>").addClass("material-icons").text("favorite_border");
       var heart = "<i class='material-icons heart' state='heart-empty'>favorite_border</i>"
-      var heartsMult = $("<div class='hearts'>");
+      var heartsMult = $("<div class='hearts'>").attr("heart-index", insideList[i].hearts);
       heartsMult.append(heart.repeat(5));
       p.prepend(b);
       itemGrp.append(p);
@@ -31,19 +30,24 @@ function display() {
       $("#list").prepend(itemGrp);
     }
 }
-
+// render our todos on page load
 display();
 
 $("#add").on("click", function(event) {
   event.preventDefault();
   // Setting the input value to a variable and then clearing the input
   if($("#addChoice").val() !== ""){
-    var val = $("input[type='text']").val().trim();
+    var entryText = $("input[type='text']").val().trim();
+    $("input[type='text'").val("");
+    var heartVal = 0;
+    var entry = {
+      "Etext": entryText,
+      "hearts": heartVal
+    };
     // Adding our new todo to our local list variable and adding it to local storage
-    list.push(val);
+    list.push(entry);
     localStorage.setItem("userlist", JSON.stringify(list));
     display();
-    $("input[type='text'").val("");
   }
 });
 
@@ -103,7 +107,7 @@ var askJessica = function (){
     $("#jPick").text("Options?");
   }
   else {
-  $("#jPick").text(insidelist[randomIndex]);
+  $("#jPick").text(insidelist[randomIndex].Etext);
   }
 }
 

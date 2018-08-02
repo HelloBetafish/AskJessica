@@ -33,7 +33,7 @@ function display() {
           ">favorite</i>";
           heartsMult.append(favHeart);
       }
-      for (var y = rating; y < 5 ; y++){
+      for (var y = rating; y < 3 ; y++){
         var emptyHeart = "<i class='material-icons heart' heartNum=" + (y + 1) + ">favorite_border</i>";
           heartsMult.append(emptyHeart);
       }
@@ -41,7 +41,7 @@ function display() {
       p.prepend(b);
       itemGrp.append(p);
       itemGrp.append(heartsMult);
-      $("#list").prepend(itemGrp);
+      $("#list").append(itemGrp);
     }
 }
 // render our todos on page load

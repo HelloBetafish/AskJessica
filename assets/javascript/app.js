@@ -52,19 +52,21 @@ $("#add").on("click", function(event) {
   event.preventDefault();
   // Setting the input value to a variable and then clearing the input
   if (list.length < 10){
-    if($("#addChoice").val() !== ""){
-      var entryText = $("input[type='text']").val().trim();
-      $("input[type='text'").val("");
+
+    var entryText = $("input[type='text']").val().trim();
+    $("input[type='text'").val("");
+
+    if(entryText !== ""){
       var heartVal = 0;
       var entry = {
         "Etext": entryText,
         "hearts": heartVal
-      };
+        };
       // Adding our new todo to our local list variable and adding it to local storage
       list.push(entry);
       localStorage.setItem("userlist", JSON.stringify(list));
       display();
-      console.log(list.length)
+      // console.log(list.length)
     }
   }   else{
     alert("Sorry, you only get 10 options. Please delete something.")
@@ -135,12 +137,26 @@ $(document.body).on("click", ".undo", function(){
 var askJessica = function (){
   var insidelist = JSON.parse(localStorage.getItem("userlist"));
   var lengthArr = insidelist.length;
-  var randomIndex = Math.floor(Math.random() * lengthArr);
+  var weightedArr = [];
+  
+  for (var i = 0; i < lengthArr ; i++){
+    var hNum = parseInt(insidelist[i].hearts);
+    for (var x = 0; x <= hNum ; x++){
+      weightedArr.push(i);
+    }
+  }
   if (lengthArr == 0) {
     $("#jPick").text("Options?");
   }
   else {
-  $("#jPick").text(insidelist[randomIndex].Etext);
+    var lengthWeightedArray = weightedArr.length;
+    var randomIndex = Math.floor(Math.random() * lengthWeightedArray);
+    var choice = weightedArr[randomIndex];
+    // console.log(lengthWeightedArray);
+    // console.log("Array " + weightedArr);
+    // console.log("Random Index: " + randomIndex);
+    // console.log("Choice: " + choice);
+    $("#jPick").text(insidelist[choice].Etext);
   }
 }
 

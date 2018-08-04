@@ -21,7 +21,7 @@
     ... when you simply feel ambivalent.</p>
 
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s5">
       <form>
       <input id="addChoice" type="text" class="validate" maxlength="30">
       <label for="addChoice">Add to List</label>
@@ -30,17 +30,20 @@
       </button>
       </form>
     </div>
-    <div class="col s6">
+    <div class="col s5">
       <button class="btn waves-effect waves-light" type="submit" name="action" id="clear">Clear List
         <i class="material-icons right">delete_sweep</i>
       </button>
     </div>
+    <div class="col s2" id="pickedList">
+
+    </div>
   </div>
 
   <div class ="row">
-    <div id="list" class="col s6">
+    <div id="list" class="col s5">
     </div>
-    <div class="col s6">
+    <div class="col s5">
       <h2>Jessica picks...</h2>
         <button class="btn waves-effect waves-light" type="submit" name="action" id="pick">Ask Jessica
           <i class="material-icons right">face</i>

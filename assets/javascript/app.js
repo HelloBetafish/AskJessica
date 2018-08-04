@@ -160,7 +160,18 @@ var askJessica = function (){
     $("#jPick").append("<i class='material-icons' id='thumbUp'>thumb_up</i>");
   }
 }
-
+// Ask Jessica button
 $(document.body).on("click", "#pick", function() {
   askJessica();
+});
+
+// Thumbs down icon click
+$(document.body).on("click", "#thumbDown", function(){
+    $("#jPick").text("");
+});
+
+// Thumbs up icon click
+$(document.body).on("click", "#thumbUp", function(){
+    $("#jPick").text("");
+    
 });

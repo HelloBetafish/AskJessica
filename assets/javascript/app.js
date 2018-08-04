@@ -172,6 +172,10 @@ $(document.body).on("click", "#thumbDown", function(){
 
 // Thumbs up icon click
 $(document.body).on("click", "#thumbUp", function(){
+    var picked = $("#jPick").text();
+    var test = picked.substring(0,picked.length-18);
+    // console.log(test);
     $("#jPick").text("");
+    $("#pickedList").text(test);
 
 });

@@ -14,7 +14,7 @@
 </head>
 <body>
 <main>
-<div class="container">
+<div >
   <h1 class="center">Ask Jessica!</h1>
   <p class="center">...when you don't want the burden of making the wrong decision. <br>
     ... when decision paralysis takes ahold of you. <br>
@@ -28,6 +28,9 @@
       <button class="btn waves-effect waves-light" type="submit" value="Submit" name="action" id="add">Submit
         <i class="material-icons right">send</i>
       </button>
+<!--       <button class="btn waves-effect waves-light" type="submit" name="action" id="clear">Clear List
+        <i class="material-icons right">delete_sweep</i>
+      </button> -->
       </form>
     </div>
     <div class="col s5">
@@ -35,8 +38,9 @@
         <i class="material-icons right">delete_sweep</i>
       </button>
     </div>
-    <div class="col s2" id="pickedList">
-
+    <div class="col s2" >
+      <h3>Your picks:</h3>
+       <div class="divider"></div>
     </div>
   </div>
 
@@ -49,6 +53,9 @@
           <i class="material-icons right">face</i>
         </button>
       <h3 id="jPick"></h3>
+    </div>
+    <div class="col s2" >
+      <p id="pickedList"></p>
     </div>
   </div>
 </div>

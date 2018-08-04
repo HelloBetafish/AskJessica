@@ -49,3 +49,7 @@ button{
 	padding: 10px;
 	margin-left: 15px;
 }
+
+#addChoice {
+	font-size: 40px;
+}

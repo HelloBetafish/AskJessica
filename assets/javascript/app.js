@@ -20,21 +20,20 @@ function display() {
 
     for (var i = 0; i < insideList.length; i++) {
       var itemGrp = $("<div class='itemGrp'>");
-      var p = $("<p>").text(insideList[i].Etext);
+      var p = $("<h3>").text(insideList[i].Etext);
       var b = $("<button class='delete'>").text("x").attr("data-index", i);
-      // var heart = "<i class='material-icons heart' state='heart-empty'>favorite_border</i>";
       var heartsMult = $("<div class='hearts'>").attr("heart-index", insideList[i].hearts).attr("data-index", i);
 
       heartsMult.append("<i class='material-icons undo'>undo</i>");
 
       var rating = insideList[i].hearts;
       for (var x = 0; x < rating; x++){
-          var favHeart = "<i class='material-icons heart' heartNum=" + (x + 1) + 
+          var favHeart = "<i class='material-icons heart' style='font-size:35px;' heartNum=" + (x + 1) + 
           ">favorite</i>";
           heartsMult.append(favHeart);
       }
       for (var y = rating; y < 3 ; y++){
-        var emptyHeart = "<i class='material-icons heart' heartNum=" + (y + 1) + ">favorite_border</i>";
+        var emptyHeart = "<i class='material-icons heart' style='font-size:35px;' heartNum=" + (y + 1) + ">favorite_border</i>";
           heartsMult.append(emptyHeart);
       }
       // heartsMult.append(heart.repeat(5));
@@ -157,6 +156,8 @@ var askJessica = function (){
     // console.log("Random Index: " + randomIndex);
     // console.log("Choice: " + choice);
     $("#jPick").text(insidelist[choice].Etext);
+    $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
+    $("#jPick").append("<i class='material-icons' id='thumbUp'>thumb_up</i>");
   }
 }
 

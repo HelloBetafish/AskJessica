@@ -5,12 +5,28 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family: 'Jua', sans-serif;
 }
 
 main {
   flex: 1 0 auto;
 }
 
+p{
+	font-size: 25px;
+}
+
+h3 {
+	font-size: 25px;
+}
+
+#add, #clear, #pick {
+	font-size: 20px;
+}
+
+button{
+	font-size: 50px;
+}
 .delete {
   margin: 3px 7px;
 }
@@ -26,4 +42,10 @@ main {
     page-break-inside: avoid;           /* Theoretically FF 20+ */
     break-inside: avoid-column;         /* IE 11 */
     display:table;                      /* Actually FF 20+ */
+}
+
+#thumbUp, #thumbDown{
+	font-size: 30px;
+	padding: 10px;
+	margin-left: 15px;
 }

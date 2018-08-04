@@ -20,7 +20,7 @@ function display() {
 
     for (var i = 0; i < insideList.length; i++) {
       var itemGrp = $("<div class='itemGrp'>");
-      var p = $("<h3>").text(insideList[i].Etext);
+      var p = $("<p class='lText'>").text(insideList[i].Etext);
       var b = $("<button class='delete'>").text("x").attr("data-index", i);
       var heartsMult = $("<div class='hearts'>").attr("heart-index", insideList[i].hearts).attr("data-index", i);
 
@@ -173,5 +173,5 @@ $(document.body).on("click", "#thumbDown", function(){
 // Thumbs up icon click
 $(document.body).on("click", "#thumbUp", function(){
     $("#jPick").text("");
-    
+
 });

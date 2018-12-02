@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   font-family: 'Jua', sans-serif;
+  color: #5d4037;
 }
 
 main {
@@ -30,6 +31,7 @@ h3 {
 button{
 	font-size: 50px;
 }
+
 .delete {
   margin: 3px 7px;
 }

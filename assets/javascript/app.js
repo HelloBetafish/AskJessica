@@ -158,7 +158,42 @@ var askJessica = function (){
     $("#jPick").text(insidelist[choice].Etext);
     $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
     $("#jPick").append("<i class='material-icons' id='thumbUp'>thumb_up</i>");
+    
+
+  var apikey = "57fd7b1be3b84af394c2693c04cb788d";
+  var subject = insidelist[choice].Etext;
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + subject + "&api_key=" + apikey +
+  "&limit=1";
+
+  // // Performing our AJAX GET request
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+  // After the data comes back from the API
+  .done(function(response){
+    var results = response.data;
+    console.log(results);
+    for (var i = 0; i<results.length; i++){
+      //Limit result ratings displayed
+      if (results[i].rating !== "r" && results[i].rating !== "pg-13"){
+        var gifDiv = $("<div class= 'gDiv'>");
+        var imageUrlS = results[i].images.fixed_height_still.url;
+        var imageUrlA = results[i].images.fixed_height.url;
+        var topicImg = $("<img>");
+        topicImg.attr("src", imageUrlS);
+        topicImg.attr("alt","image");
+        topicImg.attr("data-still", imageUrlS);
+        topicImg.attr("data-animate", imageUrlA);
+        topicImg.attr("data-state", "still");
+        topicImg.addClass("gif");
+        gifDiv.prepend(topicImg);
+        $("#jPick").append(gifDiv);
+      }
+    } 
+  });
   }
+
 }
 // Ask Jessica button
 $(document.body).on("click", "#pick", function() {
@@ -178,4 +213,17 @@ $(document.body).on("click", "#thumbUp", function(){
     $("#jPick").text("");
     $("#pickedList").text(test);
 
+});
+
+$(document.body).on("click", ".gif", function(){
+  var state = $(this).attr("data-state");
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  }
+  else{
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state","still");
+  }
+  $(this).prev("tr").remove();
 });

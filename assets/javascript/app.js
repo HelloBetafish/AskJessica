@@ -148,6 +148,7 @@ var askJessica = function (){
     $("#jPick").text("Options?");
   }
   else {
+    $("#jPick").empty();
     var lengthWeightedArray = weightedArr.length;
     var randomIndex = Math.floor(Math.random() * lengthWeightedArray);
     var choice = weightedArr[randomIndex];
@@ -156,7 +157,7 @@ var askJessica = function (){
     // console.log("Random Index: " + randomIndex);
     // console.log("Choice: " + choice);
     $("#jPick").text(insidelist[choice].Etext);
-    $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
+    // $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
     $("#jPick").append("<i class='material-icons' id='thumbUp'>thumb_up</i>");
     
 
@@ -173,13 +174,12 @@ var askJessica = function (){
   // After the data comes back from the API
   .done(function(response){
     var results = response.data;
-    console.log(results);
-    for (var i = 0; i<results.length; i++){
+    // console.log(results);
       //Limit result ratings displayed
-      if (results[i].rating !== "r" && results[i].rating !== "pg-13"){
+      if (results[0].rating !== "r" && results[0].rating !== "pg-13"){
         var gifDiv = $("<div class= 'gDiv'>");
-        var imageUrlS = results[i].images.fixed_height_still.url;
-        var imageUrlA = results[i].images.fixed_height.url;
+        var imageUrlS = results[0].images.fixed_height_still.url;
+        var imageUrlA = results[0].images.fixed_height.url;
         var topicImg = $("<img>");
         topicImg.attr("src", imageUrlA);
         topicImg.attr("alt","image");
@@ -189,11 +189,9 @@ var askJessica = function (){
         topicImg.addClass("gif");
         gifDiv.prepend(topicImg);
         $("#jPick").append(gifDiv);
-      }
     } 
   });
   }
-
 }
 // Ask Jessica button
 $(document.body).on("click", "#pick", function() {
@@ -201,14 +199,15 @@ $(document.body).on("click", "#pick", function() {
 });
 
 // Thumbs down icon click
-$(document.body).on("click", "#thumbDown", function(){
-    $("#jPick").text("");
-});
+// $(document.body).on("click", "#thumbDown", function(){
+//     $("#jPick").text("");
+// });
 
 // Thumbs up icon click
 $(document.body).on("click", "#thumbUp", function(){
     var picked = $("#jPick").text();
-    var test = picked.substring(0,picked.length-18);
+    // Use -18 if you add thumbs down icon back in
+    var test = picked.substring(0,picked.length-8);
     // console.log(test);
     $("#jPick").text("");
     $("#pickedList").text(test);

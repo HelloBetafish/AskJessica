@@ -58,3 +58,7 @@ button{
 #addChoice {
 	font-size: 40px;
 }
+
+img {
+    border-radius: 8px;
+}

@@ -181,11 +181,11 @@ var askJessica = function (){
         var imageUrlS = results[i].images.fixed_height_still.url;
         var imageUrlA = results[i].images.fixed_height.url;
         var topicImg = $("<img>");
-        topicImg.attr("src", imageUrlS);
+        topicImg.attr("src", imageUrlA);
         topicImg.attr("alt","image");
         topicImg.attr("data-still", imageUrlS);
         topicImg.attr("data-animate", imageUrlA);
-        topicImg.attr("data-state", "still");
+        topicImg.attr("data-state", "animate");
         topicImg.addClass("gif");
         gifDiv.prepend(topicImg);
         $("#jPick").append(gifDiv);

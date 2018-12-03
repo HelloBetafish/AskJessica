@@ -157,7 +157,7 @@ var askJessica = function (){
     // console.log("Random Index: " + randomIndex);
     // console.log("Choice: " + choice);
     $("#jPick").text(insidelist[choice].Etext);
-    // $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
+    $("#jPick").append("<i class='material-icons' id='thumbDown'>thumb_down</i>");
     $("#jPick").append("<i class='material-icons' id='thumbUp'>thumb_up</i>");
     
 
@@ -201,15 +201,15 @@ $(document.body).on("click", "#pick", function() {
 });
 
 // Thumbs down icon click
-// $(document.body).on("click", "#thumbDown", function(){
-//     $("#jPick").text("");
-// });
+$(document.body).on("click", "#thumbDown", function(){
+    $("#jPick").text("");
+});
 
 // Thumbs up icon click
 $(document.body).on("click", "#thumbUp", function(){
     var picked = $("#jPick").text();
     // Use -18 if you add thumbs down icon back in
-    var test = picked.substring(0,picked.length-24);
+    var test = picked.substring(0,picked.length-34);
     // console.log(test);
     $("#jPick").text("");
     $("#pickedList").text(test);

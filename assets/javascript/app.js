@@ -181,12 +181,14 @@ var askJessica = function (){
         var imageUrlS = results[0].images.fixed_height_still.url;
         var imageUrlA = results[0].images.fixed_height.url;
         var topicImg = $("<img>");
+        var p = $("<p>").text("Image from Giphy");
         topicImg.attr("src", imageUrlA);
         topicImg.attr("alt","image");
         topicImg.attr("data-still", imageUrlS);
         topicImg.attr("data-animate", imageUrlA);
         topicImg.attr("data-state", "animate");
         topicImg.addClass("gif");
+        gifDiv.append(p);
         gifDiv.prepend(topicImg);
         $("#jPick").append(gifDiv);
     } 
@@ -207,7 +209,7 @@ $(document.body).on("click", "#pick", function() {
 $(document.body).on("click", "#thumbUp", function(){
     var picked = $("#jPick").text();
     // Use -18 if you add thumbs down icon back in
-    var test = picked.substring(0,picked.length-8);
+    var test = picked.substring(0,picked.length-24);
     // console.log(test);
     $("#jPick").text("");
     $("#pickedList").text(test);

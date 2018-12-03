@@ -4,13 +4,15 @@
 
 Ask Jessica is an application to help indecisive people make decisions!
 
-* Add all of your options to a list.
+* Add up to 10 options onto your list.
+
+* Rank your preferences up to 3 heart levels. The higher the heart level, the more likely it will be chosen.
 
 * Ask Jessica and she will pick one for you!
 
-* To-do: 5-heart rating system not fully functional. When working, rating the options will increase the likelihood of that particular item being chosen.
+* To-do: Fix text overflow when long word input into option list.
 
-![Screenshot](/assets/images/screenshot.JPG)
+![Screenshot](/assets/images/Ask_Jessica_Screenshot.png)
 
 
 ## Authors
@@ -19,4 +21,4 @@ Ask Jessica is an application to help indecisive people make decisions!
 
 ## Acknowledgments
 
-* UA Programming Bootcamp
+* Giphy API

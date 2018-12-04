@@ -10,6 +10,8 @@ Ask Jessica is an application to help indecisive people make decisions!
 
 * Ask Jessica and she will pick one for you!
 
+* Using Javascript and Materialize
+
 * To-do: Fix text overflow when long word input into option list.
 
 ![Screenshot](/assets/images/AskJessica_Screenshot.png)
